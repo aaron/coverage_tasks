@@ -1,0 +1,26 @@
+CoverageTasks
+=============
+
+Rake tasks for running rcov in rails
+
+
+Installation
+============
+
+git clone git://github.com/aaron/coverage_tasks.git coverage_tasks
+
+I recommend installing the spicycode version of rcov before running these tasks.
+http://github.com/spicycode/rcov/tree/master
+
+sudo gem install spicycode-rcov --source=http://gems.github.com/
+
+
+Example
+=======
+
+rake coverage:units
+rake coverage:functionals
+rake coverage:all
+
+
+Copyright (c) 2009 Aaron Baldwin, released under the MIT license
