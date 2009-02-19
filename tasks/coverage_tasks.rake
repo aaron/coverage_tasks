@@ -39,7 +39,7 @@ begin
     desc "Generate and open full coverage report"
     Rcov::RcovTask.new(:do_all) do |t|
       FileUtils.mkdir_p(ALL_DIRECTORY) unless File.directory?(ALL_DIRECTORY)
-      t.test_files = FileList['test/unit/*_test.rb'] + FileList['test/functional/*_test.rb']
+      t.test_files = FileList['test/unit/*_test.rb'] + FileList['test/functional/*_test.rb'] + FileList['test/integration/*_test.rb']
       t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/"]
       t.output_dir = ALL_DIRECTORY
     end
