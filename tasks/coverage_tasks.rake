@@ -14,7 +14,7 @@ begin
     Rcov::RcovTask.new(:do_units) do |t|
       FileUtils.mkdir_p(UNIT_DIRECTORY) unless File.directory?(UNIT_DIRECTORY)
       t.test_files = FileList['test/unit/*_test.rb']
-      t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/controllers/,/helpers/"]
+      t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/controllers/,/helpers/,/usr/"]
       t.output_dir = UNIT_DIRECTORY
     end
   
@@ -27,7 +27,7 @@ begin
     Rcov::RcovTask.new(:do_functionals) do |t|
       FileUtils.mkdir_p(FUNCTIONAL_DIRECTORY) unless File.directory?(FUNCTIONAL_DIRECTORY)
       t.test_files = FileList['test/functional/*_test.rb']
-      t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/models/"]
+      t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/models/,/usr/"]
       t.output_dir = FUNCTIONAL_DIRECTORY
     end
   
@@ -40,7 +40,7 @@ begin
     Rcov::RcovTask.new(:do_all) do |t|
       FileUtils.mkdir_p(ALL_DIRECTORY) unless File.directory?(ALL_DIRECTORY)
       t.test_files = FileList['test/unit/*_test.rb'] + FileList['test/functional/*_test.rb'] + FileList['test/integration/*_test.rb']
-      t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/"]
+      t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/usr/"]
       t.output_dir = ALL_DIRECTORY
     end
   
