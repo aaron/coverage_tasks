@@ -13,6 +13,7 @@ begin
     desc "Generate and open unit coverage report"
     Rcov::RcovTask.new(:do_units) do |t|
       FileUtils.mkdir_p(UNIT_DIRECTORY) unless File.directory?(UNIT_DIRECTORY)
+      t.libs << "test"
       t.test_files = FileList['test/unit/*_test.rb']
       t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/controllers/,/helpers/,/usr/"]
       t.output_dir = UNIT_DIRECTORY
@@ -26,6 +27,7 @@ begin
     desc "Generate and open functional coverage report"
     Rcov::RcovTask.new(:do_functionals) do |t|
       FileUtils.mkdir_p(FUNCTIONAL_DIRECTORY) unless File.directory?(FUNCTIONAL_DIRECTORY)
+      t.libs << "test"
       t.test_files = FileList['test/functional/*_test.rb']
       t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/models/,/usr/"]
       t.output_dir = FUNCTIONAL_DIRECTORY
@@ -39,6 +41,7 @@ begin
     desc "Generate and open full coverage report"
     Rcov::RcovTask.new(:do_all) do |t|
       FileUtils.mkdir_p(ALL_DIRECTORY) unless File.directory?(ALL_DIRECTORY)
+      t.libs << "test"
       t.test_files = FileList['test/unit/*_test.rb'] + FileList['test/functional/*_test.rb'] + FileList['test/integration/*_test.rb']
       t.rcov_opts = BASE_OPTIONS + ["--exclude /gems/,/Library/,/usr/"]
       t.output_dir = ALL_DIRECTORY
