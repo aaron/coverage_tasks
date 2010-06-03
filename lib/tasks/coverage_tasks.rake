@@ -60,7 +60,7 @@ end
 
 def open_in_browser(directory)
   file = directory + '/index.html'
-  if PLATFORM['darwin'] #Mac
+  if RUBY_PLATFORM['darwin'] #Mac
     system("open #{file}") 
   elsif PLATFORM[/linux/] #Ubuntu, etc.
     system("/etc/alternatives/x-www-browser #{file}")
